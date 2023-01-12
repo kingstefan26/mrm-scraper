@@ -1,5 +1,8 @@
 import '../lib/jszip.js';
 
+
+const log = e => console.log(`background.js: ${e}`);
+
 let portToPopup;
 const links = [];
 
@@ -24,6 +27,23 @@ browser.runtime.onConnect.addListener(p => {
     portToPopup.onMessage.addListener(async (m) => {
         console.log("In background script, received message from content script")
         if (m.info === "donwlaod") {
+
+            log('starting image download')
+
+            for (const img of m.entry.images) {
+                await fetch(img.src)
+                    .then(res => res.blob())
+                    .catch(err => {
+                        console.log(err);
+                    })
+                    .then(down => {
+                        if (down !== undefined) {
+                            log(`downloaded blob ${img.src}`)
+                            img.blob = down
+                        }
+                    });
+            }
+
 
             console.log(m)
 

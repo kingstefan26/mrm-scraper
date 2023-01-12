@@ -1,0 +1,54 @@
+{
+
+  "description": "scrape/download myraedingmanga.info mangas",
+  "manifest_version": 2,
+  "name": "mrm-scraper",
+  "version": "1.0",
+  "icons": {
+    "48": "src/logo/mrm-logo-48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.myreadingmanga.info/*","*://myreadingmanga.info/*","<all_urls>", "*://localhost:3000/*"],
+      "js": ["src/content_scripts/scrape.js","src/content_scripts/adblock.js"]
+    }
+  ],
+
+  "background": {
+    "page": "src/background/background.html"
+  },
+
+  "permissions": [
+    "clipboardWrite",
+    "downloads",
+    "webRequest",
+    "webRequestBlocking",
+    "<all_urls>"
+  ],
+
+
+
+  "browser_action": {
+    "browser_style": true,
+    "default_area": "navbar",
+    "default_icon": {
+      "16": "src/logo/mrm-logo-16.png",
+      "32": "src/logo/mrm-logo-32.png"
+    },
+    "default_title": "click to see scrape options",
+    "default_popup": "src/popup/scrape.html",
+    "theme_icons": [{
+      "light": "src/logo/mrm-logo-16.png",
+      "dark": "src/logo/mrm-logo-16.png",
+      "size": 16
+    }, {
+      "light": "src/logo/mrm-logo-32.png",
+      "dark": "src/logo/mrm-logo-32.png",
+      "size": 32
+    }]
+  }
+
+
+
+}

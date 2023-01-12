@@ -27,17 +27,12 @@ function scrape() {
 
         const images = []
 
-        for(let img of a){
+        for (let img of a) {
             let object = {
                 src: img.src,
                 height: img.height,
                 width: img.width
             }
-
-            log('starting image download')
-            object.blob = await fetch(img.src).then(res => res.blob()).catch(err => console.log(err));
-            log(`downloaded blob ${img.src}`)
-
             images.push(object)
         }
 
@@ -98,13 +93,13 @@ function scrape() {
         window.scroll(0, 0)
 
         log('sending entry to backgroudjs')
-        let myPort = browser.runtime.connect({name:"port-from-cs"});
+        let myPort = browser.runtime.connect({name: "port-from-cs"});
         myPort.postMessage({info: "donwlaod", entry})
 
     }
 
 
-    function getpagefromurl(url){
+    function getpagefromurl(url) {
 
 
         url = url.replace(/\/$/, "");
@@ -112,7 +107,7 @@ function scrape() {
         const n = url.lastIndexOf('/');
         const a = url.substring(n + 1);
         parseInt(a);
-        if(!a){
+        if (!a) {
             return '1';
         } else {
             return a
@@ -134,7 +129,6 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
 //
 //
 // })();
-
 
 
 // let myPort = browser.runtime.connect({name:"port-from-cs"});

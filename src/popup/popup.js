@@ -17,6 +17,7 @@ bgScriptConnection.onMessage.addListener(msg => {
             tag.href = href;
             tag.download = tag.text = filename;
             linksdiv.appendChild(tag);
+            linksdiv.innerHTML += '<br>'
 
 
         })

@@ -4,12 +4,38 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script defer src="popup.js"></script>
+    <style>
+        body {
+            width: 200px;
+            height: 300px;
+        }
+        #button {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        #header * {
+            text-align: center;
+        }
+        #header {
+            padding-bottom: 2px;
+        }
+        #links {
+            overflow: scroll;
+        }
+
+    </style>
 </head>
 <body>
 <!--https://myreadingmanga.info/%e5%ae%8f%e3%81%8d-hiroki-fanboox/-->
-<div>
-    <h1>HELLO</h1>
-    <input type="button" value="SCRAPE" id="btn">
+<div id="header">
+    <h3>MRM SCRAPER 2000</h3>
+    <p>
+        click the button to scrape, then a download link with a zip will show up bellow
+    </p>
+    <div id="button">
+        <input type="button" value="Scrape Current Site" id="btn">
+    </div>
 </div>
 
 <div id="links">
